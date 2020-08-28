@@ -1,0 +1,19 @@
+name: Node.js CI
+
+on: [pull_request]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/nestjs-test-action@master
+    - name: Use Node.js 12
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12
+    - run: npm install
+    - run: npm test
+      env:
+        CI: true
